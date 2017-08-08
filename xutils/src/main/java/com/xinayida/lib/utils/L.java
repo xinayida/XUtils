@@ -18,7 +18,11 @@ public class L {
     public static boolean isDebug = true;//BuildConfig.DEBUG;
     public static int maxLogSize = 2500;
 
-    public static final String TAG = "kindergarten";
+    public static String TAG = "DS";
+
+    public static void init(String tag) {
+        TAG = tag;
+    }
 
     // 下面四个是默认tag的函数
     public static void i(String msg) {
