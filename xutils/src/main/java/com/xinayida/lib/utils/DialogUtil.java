@@ -105,6 +105,8 @@ public class DialogUtil {
 
     public static Dialog showEditDialog(Context context, String title, String positiveText, final OnEditDialogConfirm listener) {
         final EditText editText = new EditText(context);
+        int padding = DisplayUtils.dip2px(context, 20);
+        editText.setPadding(padding, 0, padding, 0);
         AlertDialog.Builder builder = dialogBuilder(context, title, editText);
         builder.setCancelable(true);
         builder.setPositiveButton(positiveText, new DialogInterface.OnClickListener() {
@@ -120,6 +122,7 @@ public class DialogUtil {
             }
         });
         Dialog dialog = builder.show();
+        ViewUtil.showInputMethod(editText);
         dialog.setCanceledOnTouchOutside(true);
         return dialog;
     }
