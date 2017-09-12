@@ -18,6 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * 应用工具类
  * Created by stephan on 16/7/9.
  */
 public class AppUtils {
