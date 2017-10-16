@@ -25,7 +25,8 @@ import io.reactivex.functions.Predicate;
 
 /**
  * Flux dispatcher, contains a rxbus used to send action to store
- *
+ * 消息发送类
+ * Dispatcher.get().postAction(Action.type(ActionType.xxxx).bundle("xxxx", xxxx).build());
  * @author Johnny Shieh (JohnnyShieh17@gmail.com)
  * @version 1.0
  */

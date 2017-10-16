@@ -172,13 +172,15 @@ public class SpUtil {
     public <T> T readBean(Class<T> clazz) {
         T t = null;
         SharedPreferences sharedPre = getSharedPreferences(clazz.getSimpleName());
+        boolean hasValue = false;
         try {
             t = clazz.newInstance();
             Field[] arrFiled = clazz.getDeclaredFields();
             for (Field f : arrFiled) {
-                if (!TYPES.containsKey(f.getType())) {
+                if (!TYPES.containsKey(f.getType()) || !sharedPre.contains(f.getName())) {
                     continue;
                 }
+                hasValue = true;
                 int type = TYPES.get(f.getType());
                 switch (type) {
                     case CLZ_BYTE:
@@ -221,12 +223,12 @@ public class SpUtil {
             e.printStackTrace();
         }
         L.d("readBean " + clazz.getSimpleName());
-        if (t.toString() != null) {
+        if (hasValue) {
             L.d(t.toString());
+            return t;
         } else {
-            L.d("is null");
+            return null;
         }
-        return t;
     }
 
     public static final int CLZ_BYTE = 1;
