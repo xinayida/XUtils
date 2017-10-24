@@ -196,6 +196,9 @@ public class SpUtil {
                         f.set(t, intValue);
                         break;
                     case CLZ_LONG:
+                        if ("serialVersionUID".equals(f.getName())) {
+                            continue;
+                        }
                         long longValue = sharedPre.getLong(f.getName(), 0L);
                         f.set(t, longValue);
                         break;
